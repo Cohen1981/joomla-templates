@@ -1,0 +1,403 @@
+/* Import project-level system CSS */
+@import "normalize.css";
+@import url(../../../media/jui/css/icomoon.css);
+@import url(../../../media/jui/css/bootstrap.min.css);
+@import url('https://fonts.googleapis.com/css?family=Tangerine');
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*Defining Basic-Colors*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+:root {
+    --site-background: #333333;
+    --content-background: #fffffc;
+    --akzent: #A62C40;
+    --shadow: #BDBDBD;
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*Getting rid of unwanted styling*/
+/*Overwriting unnerving bootstrap styles*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+*, .breadcrumb{ margin:0px; padding:0px;}
+.breadcrumb, .nav{margin:0px;}
+.btn-toolbar>.btn+.btn, .btn-toolbar>.btn-group+.btn, .btn-toolbar>.btn+.btn-group {
+    margin-left: 0px;
+}
+.pull-left.item-image{max-width:100px; margin-right:20px; margin-bottom: 10px;}
+.category-desc img {
+    float: left;
+    max-width: 100px;
+    border: solid 1px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.breadcrumb .divider { display:none; }
+.breadcrumb a { padding-right: 15px; }
+.btn-group.pull-right {
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+.btn-group.pull-left {
+    margin-right:10px;
+    margin-bottom: 5px;
+}
+.row {
+    margin-left: 0px;
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*Colors*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+body,.navbar-brand,nav
+{background-color: var(--site-background,#333333);}
+.container-sidebar-right,.container-sidebar-left,.container-component,footer,#breadcrumb, .breadcrumb,
+.horizontal-nav ul.menusub, .horizontal-nav ul.menu li.active, .horizontal-nav ul.menu li:hover
+{background-color: var(--content-background,#fffffc);}
+a,h1,h2,h3,h4,h5,h6,
+.horizontal-nav ul.menu>li.active a,.horizontal-nav ul.menu>li:hover a,
+.rl_tabs span
+{color:var(--akzent,#A62C40);}
+.horizontal-nav ul.menu>li>a
+{color:var(--content-background,#fffffc);}
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*Styling basic html elements*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+ul,ol,li{list-style: none; margin:0px; line-height: 1.5em;}
+a{text-decoration: none;}
+html, body {
+    font-family: sans-serif;
+    font-size: 1.0em;
+    line-height: 1.5em;
+}
+h1 {font-size: 1.2rem;}
+h2 {font-size: 1.1rem;}
+h3, h4, h5, h6 {font-size: 1.0rem;}
+.rounded {
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 0 0px 8px var(--shadow,#BDBDBD);
+}
+.bottom-rounded {
+    border-radius: 0px 0px 6px 6px;
+    box-shadow: 0 0px 8px var(--shadow,#BDBDBD);
+}
+.float-right{
+    float:right;
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*Template Layout Grid*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+.site-grid{
+    display:grid;
+    grid-template-columns: minmax(0px,auto) minmax(auto,1100px) minmax(0px,auto);
+    grid-template-areas:    ". nav ."
+                            ". logo ."
+                            ". breadcrumb ."
+                            ". content ."
+                            ". footer .";
+}
+.navbar-brand{
+    grid-area: logo;
+    margin-top: 20px;
+}
+#top_container{
+    display: block;
+    width: 100%;
+    background-color: var(--site-background);
+}
+nav {
+    grid-area: nav;
+    box-shadow: 0 0px 8px var(--shadow,#BDBDBD);
+}
+#breadcrumb{ grid-area: breadcrumb; }
+.breadcrumb{font-size: 1.0rem;}
+main{
+    grid-area: content;
+    margin-top: 10px;
+    margin:20px 0px;
+    display: grid;
+    grid-gap:10px;
+    justify-items: stretch;
+    align-items: stretch;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-areas:    "left left left"
+    "center center center"
+    "right right right";
+}
+footer{
+    grid-area: footer;
+    margin-bottom:20px;
+}
+#breadcrumb,.container-component,.container-sidebar-left,.container-sidebar-right,.copyright
+{
+    padding: 10px 20px;
+}
+.navbar-brand img {
+    width: 100%;
+    border-radius: 6px 6px 0px 0px;
+}
+#breadcrumb,#mobile-nav{
+    border-radius: 0px 0px 6px 6px;
+}
+.container-sidebar-left {
+    grid-area: left;
+}
+.container-sidebar-right{
+    grid-area: right;
+}
+.container-component{
+    grid-area: center;
+}
+.hidden,input.hidden{
+    width:0px;
+    height: 0px;
+    margin:0px;
+    padding:0px;
+    line-height: 0px;
+    visibility: hidden;
+    display: none;
+}
+.css_switch{
+    background-color: var(--content-background);
+    padding:10px 20px;
+    font-size: 1.1rem;
+    word-spacing: normal;
+    margin:0px;
+    border:1px solid var(--site-background);
+}
+.hide-on-desktop{
+    visibility: visible;
+}
+.hide-on-mobile{
+    visibility: hidden;
+    display: none;
+}
+#top-arrow{
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background-color: var(--content-background);
+    color: var(--akzent);
+    border:solid 1px var(--site-background);
+    padding: 15px;
+    z-index: 9999;
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*Basic ul/ li behavior for header and footer/
+/*--------------------------------------------------------------------------------------------------------------------*/
+header ul, header ol,
+.horizontal-nav ul, .horizontal-nav ol,#breadcrumb ul,#breadcrumb ol,
+footer ul, footer ol{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*Navigation Top*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+.horizontal-nav h1, .horizontal-nav h2, .horizontal-nav h3, .horizontal-nav h4 {
+    margin:0px;
+    padding:10px 10px;
+    background-color: var(--shadow);
+}
+.horizontal-nav label span {
+    vertical-align: text-top;
+    margin-right: 10px;
+    text-align: center;
+}
+.horizontal-nav {
+    position:relative;
+    top:0px;
+    width: 100%;
+    font-size: 1.1rem;
+    z-index: 9999;
+}
+.horizontal-nav li {
+    display:block;
+    width:100%;
+    padding:10px 0px;
+}
+/*Ebene 1*/
+.horizontal-nav ul.menu>li {
+    box-shadow:  0 0px 8px var(--shadow,#BDBDBD);
+}
+.horizontal-nav ul.menu>li a {
+    margin:0px 20px;
+}
+/*Ebene 2*/
+.horizontal-nav ul.menu>li>ul {
+    display:flex;
+    position:relative;
+    background-color:var(--content-background);
+    border-bottom: var(--akzent,#A62C40) solid 4px;
+}
+.horizontal-nav ul.menu>li>ul a {
+    color:var(--akzent);
+}
+.horizontal-nav ul.menu>li>ul>li {
+    border:1px solid var(--content-background,#fffffc);
+}
+.horizontal-nav ul.menu>li>ul>li:hover {
+    border-left:1px solid black;
+    border-right:1px solid black;
+}
+.horizontal-nav ul.menu>li>ul>li>a {
+    text-decoration:underline;
+    font-weight:bold;
+    margin-left:30px;
+}
+/*Ebene 3*/
+.horizontal-nav ul.menu>li>ul>li>ul {
+    flex-direction:column;
+}
+.horizontal-nav ul.menu>li>ul>li>ul li {
+    padding:5px;
+    padding-left:0px;
+}
+.horizontal-nav ul.menu>li>ul>li>ul>li a {
+    margin-left:40px;
+}
+.horizontal-nav ul.menu>li>ul>li>ul>li {
+    border-top:1px solid var(--content-background);
+    border-bottom:1px solid var(--content-background);
+}
+.horizontal-nav ul.menu>li>ul>li>ul>li:hover {
+    border-top:1px solid black;
+    border-bottom:1px solid black;
+}
+/**
+* Button Magic
+ */
+.switchable{
+    display: none;
+}
+input[type=checkbox]:checked ~ .switchable {
+    display:block;
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*Styling Footer Menu*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+footer ul {
+    margin-left: -10px;
+}
+footer li{
+    padding: 10px 20px;
+}
+footer p.float-right{
+    margin:0px;
+    padding:10px 20px;
+}
+footer.moduletable{display:inline-block;}
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*Styling Joomla Article, Blog, Modules, etc.*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+img.pull-left {
+    margin-right:10px;
+}
+img.pull-right{
+    margin-left: 10px;
+}
+.categories-list>div>img {
+    float:left;
+    max-width: 100px;
+    border: solid 1px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.categories-list>div{ clear:both; }
+.page-header {
+    padding-bottom: 9px;
+    border-bottom: 1px solid var(--shadow,#eee);
+}
+.categories-list>div{
+    padding-top:10px;
+}
+@media (max-width: 799px) {
+    main .blog .items-row > div {
+        float: none;
+        width: 100%;
+    }
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*Desktop Layout*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+@media (min-width: 800px) {
+    /*----------------------------------------------------------------------------------------------------------------*/
+    /*Change Grid*/
+    /*----------------------------------------------------------------------------------------------------------------*/
+    main {
+        grid-template-areas: "left center right";
+    }
+    .site-grid {
+        grid-template-areas: ". logo ." ". nav ." ". breadcrumb ." ". content ." ". footer .";
+    }
+    /*----------------------------------------------------------------------------------------------------------------*/
+    /*Change navigation behaviour*/
+    /*----------------------------------------------------------------------------------------------------------------*/
+    #mobile-top{
+        width:250px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    nav .switchable{
+        display: block;
+    }
+    nav {
+        position:relative;
+        z-index:inherit;
+    }
+    nav #menu_container li{
+        display:block;
+        width:auto;
+    }
+    nav #menu_container ul.menu>li>ul>li a{
+        margin-left:20px;
+    }
+    nav #menu_container ul.menu>li>ul>li>ul>li a{
+        margin-left:20px;
+    }
+    nav #menu_container ul.menu>li>ul{
+        display:none;
+    }
+    nav #menu_container ul.menu>li:hover>ul{
+        margin-top: 10px;
+        display:flex;
+        position:absolute;
+        left:0;
+        background-color:var(--content-background);
+        width:100%;
+        z-index: 9999;
+    }
+    .hide-on-desktop{
+        visibility: hidden;
+        width:0px;
+        height: 0px;
+        display: none;
+    }
+    .hide-on-mobile{
+        visibility: visible;
+        display: block;
+    }
+    h1,h2,h3,h4,h5,h6{
+        font-family:Tangerine;
+        font-size:1.8rem;
+    }
+    p::first-letter {
+        font-family:Tangerine;
+        font-weight: bold;
+        color: var(--akzent,#A62C40);
+        font-size: 160%;
+        letter-spacing:2px;
+    }
+    .navbar-brand{
+        margin-top: 20px;
+    }
+    /*----------------------------------------------------------------------------------------------------------------*/
+    /*Change top behaviour*/
+    /*----------------------------------------------------------------------------------------------------------------*/
+    #top_modules{
+        display:grid;
+        grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+        grid-column-gap: 10px;
+        border-bottom: solid 1px var(--content-background);
+    }
+    #top1,#top2,#top3,#top4{
+        border: solid 1px var(--content-background);
+    }
+}
